@@ -9,7 +9,7 @@ import (
 dagger.#Plan & {
 
 	client: filesystem: ".": read: contents:         dagger.#FS
-	client: filesystem: "./output": write: contents: actions.build.figlet.output
+	client: filesystem: "./output": write: contents: actions.build.output
 	
 	actions: {
 		load: {
@@ -19,7 +19,7 @@ dagger.#Plan & {
 			}
             figletSource: _loadSource.output
 		}
-		figlet: figlet.#Figlet & {
+		build: figlet.#Figlet & {
 			source: load.figletSource
 			filename: "dagger"
 		}
